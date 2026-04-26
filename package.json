@@ -1,0 +1,13 @@
+{
+  "name": "thirukkulal-kel",
+  "version": "1.0.0",
+  "description": "திருக்குறள் கேள் - Search Thirukkural by verse number using Gemini AI",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}

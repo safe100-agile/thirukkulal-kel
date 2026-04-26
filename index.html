@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>திருக்குறள் கேள் - Thirukkulal Kel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="logo">திருக்குறள் கேள்</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image-wrap">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Original_Image_of_Thiruvalluvar.jpg/250px-Original_Image_of_Thiruvalluvar.jpg"
+        alt="திருவள்ளுவர்"
+        class="hero-img"
+        onerror="this.style.display='none'; document.getElementById('imgFallback').style.display='flex';"
+      />
+      <div id="imgFallback" class="img-fallback">திரு<br>வள்ளு<br>வர்</div>
+    </div>
+    <div class="hero-text">
+      <h1>திருக்குறள் கேள்</h1>
+      <p>திருவள்ளுவரின் அமரத் திருக்குறளை எண் கொடுத்து அறிவோம்</p>
+      <div class="search-box">
+        <input
+          type="number"
+          id="kuralInput"
+          placeholder="குறள் எண் (1 - 1330)"
+          min="1"
+          max="1330"
+        />
+        <button id="searchBtn" onclick="searchKural()">தேடு</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <div id="loadingDiv" class="loading hidden">
+    <div class="spinner"></div>
+    <p>Gemini AI யிடம் கேட்கிறோம்...</p>
+  </div>
+
+  <div id="resultSection" class="result-section hidden">
+    <div class="result-card">
+      <div class="result-meta">
+        <span class="book-tag" id="bookTag"></span>
+        <span class="adhikaram-tag" id="adhikaramTag"></span>
+        <span class="number-tag" id="numberTag"></span>
+      </div>
+      <div class="kural-verse">
+        <p id="line1"></p>
+        <p id="line2"></p>
+      </div>
+      <div class="meaning-box">
+        <h3>பொருள்</h3>
+        <p id="meaning"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="notFound" class="not-found hidden">
+    <p>❌ குறள் எண் கிடைக்கவில்லை. 1 முதல் 1330 வரை உள்ளிடவும்.</p>
+  </div>
+
+  <footer>
+    <p>திருவள்ளுவர் இயற்றிய திருக்குறள் — 1330 குறள்கள்</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

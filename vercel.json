@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/kural",     "destination": "/api/kural.js" },
+    { "source": "/api/adhikaram", "destination": "/api/adhikaram.js" }
+  ]
+}

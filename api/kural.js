@@ -22,12 +22,21 @@ module.exports = async (req, res) => {
   "meaning": "meaning in Tamil in 2-3 sentences"
 }`;
 
-  try {
-    const result = await model.generateContent(prompt);
-    const text   = result.response.text().replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-    const kural  = JSON.parse(text);
-    res.json(kural);
-  } catch (err) {
-    res.status(500).json({ error: 'Gemini API பிழை: ' + err.message });
+  const delay = ms => new Promise(r => setTimeout(r, ms));
+
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const result = await model.generateContent(prompt);
+      const text   = result.response.text().replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+      const kural  = JSON.parse(text);
+      return res.json(kural);
+    } catch (err) {
+      const is503 = err.message && err.message.includes('503');
+      if (is503 && attempt < 4) {
+        await delay(attempt * 1000);
+        continue;
+      }
+      return res.status(500).json({ error: 'Gemini API பிழை: ' + err.message });
+    }
   }
 };

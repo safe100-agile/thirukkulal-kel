@@ -1,6 +1,14 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/api/kural", "destination": "/api/kural.js" }
+  "builds": [
+    { "src": "api/kural.js", "use": "@vercel/node" },
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "css/**", "use": "@vercel/static" },
+    { "src": "js/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/kural", "dest": "/api/kural.js" },
+    { "src": "/(css|js)/(.*)", "dest": "/$1/$2" },
+    { "src": "/", "dest": "/index.html" }
   ]
 }

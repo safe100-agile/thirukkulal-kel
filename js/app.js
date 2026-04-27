@@ -30,9 +30,8 @@ async function searchKural() {
 }
 
 function showKural(k) {
-  document.getElementById('bookTag').textContent      = k.book;
-  document.getElementById('adhikaramTag').textContent = `அதிகாரம் ${k.adhikaram_number}: ${k.adhikaram_name}`;
-  document.getElementById('numberTag').textContent    = `குறள் ${k.number}`;
+  document.getElementById('bookTag').textContent   = k.book;
+  document.getElementById('numberTag').textContent = `குறள் ${k.number}`;
   document.getElementById('line1').textContent        = k.line1;
   document.getElementById('line2').textContent        = k.line2;
   document.getElementById('meaning').textContent      = k.meaning;
